@@ -9,6 +9,38 @@
     <script src="./javascript.js"></script>
 </head>
 <body>
+
+    <div class="form-container">
+        <form id="myForm">
+            <h1>New Book:</h1>
+
+            <label for="title">Title</label>
+            <input type="text" id="text" placeholder="Title" name="title" required autofocus>
+
+            <label for="author">Author</label>
+            <input type="text" id="author" placeholder="Author" name="author" required>
+
+            <label for="pages">Pages</label>
+            <input type="number" id="number" placeholder="Number of Pages" name="pages" required>
+
+            <button type="submit" class="button">Submit</button>
+            <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
+        </form>
+
+        <br>
+            <label for="retrieveTitle">Enter title to retrieve item</label>
+            <input type="text" id="retrieveTitle" placeholder="Retrieve Title" required>
+        <br>
+        <button id="retrieveButton">Retrieve Title</button>
+        <br>
+        <div id="retrieve"></div>
+        <br>
+        <label for="removeTitle">Enter title to remove item</label>
+        <input type="text" id="removeTitle" placeholder="Remove Title" required>
+        <button id="removeButton">Remove Title</button>
+        <br>
+        <button id="clearButton">Clear all records</button>
+    </div>
     
 </body>
 </html>
