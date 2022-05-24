@@ -13,6 +13,7 @@ let key = "library";
 currentLibrary = localStorage.getObj(key);
 
 populateGrid();
+openForm();
 
 function populateGrid() {
 let container = document.querySelector(".books");
@@ -20,21 +21,21 @@ let container = document.querySelector(".books");
     if (currentLibrary.length === 0){container.style.display = "none"; return;}
     for(let i = 0; i < currentLibrary.length; i++){
         let cell = document.createElement("div");
-        cell.className += "blue";
+        cell.className += "book";
 
         let row1 = document.createElement("div");
         row1.id = i + 1;
-        row1.innerText = currentLibrary[i].title;
+        row1.innerText = "Title: " + currentLibrary[i].title;
         cell.appendChild(row1);
 
         let row2 = document.createElement("div");
         row2.id = i + 1;
-        row2.innerText = currentLibrary[i].author;
+        row2.innerText = "Author: " + currentLibrary[i].author;
         cell.appendChild(row2);
 
         let row3 = document.createElement("div");
         row3.id = i + 1;
-        row3.innerText = currentLibrary[i].pages;
+        row3.innerText = "Pages: " + currentLibrary[i].pages;
         cell.appendChild(row3);
 
         let row4 = document.createElement("button");
@@ -88,13 +89,23 @@ function doForm() {
 
     currentLibrary.push(newBook);
     
-    localStorage.setObj(key, currentLibrary);    
+    localStorage.setObj(key, currentLibrary);  
+    
 }
+
 
 function removeBook(){
     currentLibrary.pop();
     localStorage.setObj(key, currentLibrary);
     window.location.reload();
+}
+
+function openForm() {
+    document.getElementById("form-container").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("form-container").style.display = "none";
 }
 
 
