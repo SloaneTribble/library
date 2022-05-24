@@ -106,6 +106,9 @@ function openForm() {
 
 function closeForm() {
     document.getElementById("form-container").style.display = "none";
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("pages").value = "";
 }
 
 
