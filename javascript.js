@@ -21,7 +21,33 @@ let container = document.querySelector(".books");
     for(let i = 0; i < currentLibrary.length; i++){
         let cell = document.createElement("div");
         cell.className += "blue";
-        cell.innerHTML = currentLibrary[i].title;
+
+        let row1 = document.createElement("div");
+        row1.id = i + 1;
+        row1.innerText = currentLibrary[i].title;
+        cell.appendChild(row1);
+
+        let row2 = document.createElement("div");
+        row2.id = i + 1;
+        row2.innerText = currentLibrary[i].author;
+        cell.appendChild(row2);
+
+        let row3 = document.createElement("div");
+        row3.id = i + 1;
+        row3.innerText = currentLibrary[i].pages;
+        cell.appendChild(row3);
+
+        let row4 = document.createElement("button");
+        row4.className += "remove-button";
+        row4.innerText = "Remove";
+        row4.onclick = function () {
+            let index = row1.id - 1;
+            currentLibrary.splice(index, 1);
+            localStorage.setObj(key, currentLibrary);
+            window.location.reload();
+        };
+        cell.appendChild(row4);
+
         container.appendChild(cell);
     }
     
@@ -67,9 +93,8 @@ function doForm() {
 
 function removeBook(){
     currentLibrary.pop();
-  localStorage.setObj(key, currentLibrary);
-
-  populateGrid();
+    localStorage.setObj(key, currentLibrary);
+    window.location.reload();
 }
 
 

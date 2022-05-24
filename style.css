@@ -1,8 +1,15 @@
 .books{
     display: grid;
     grid-template-columns: auto auto;
+
 }
 
 .blue{
     background-color: blue;
+    border: 2px solid black;
+    display: grid;
+}
+
+.remove-button{
+    background-color: red;
 }
