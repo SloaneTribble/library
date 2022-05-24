@@ -12,6 +12,21 @@ let key = "library";
 
 currentLibrary = localStorage.getObj(key);
 
+populateGrid();
+
+function populateGrid() {
+let container = document.querySelector(".books");
+
+    if (currentLibrary.length === 0){container.style.display = "none"; return;}
+    for(let i = 0; i < currentLibrary.length; i++){
+        let cell = document.createElement("div");
+        cell.className += "blue";
+        cell.innerHTML = currentLibrary[i].title;
+        container.appendChild(cell);
+    }
+    
+}
+
 function Book(title, author, pages, isRead){
     this.title = title;
     this.author = author;
@@ -47,6 +62,18 @@ function doForm() {
 
     currentLibrary.push(newBook);
     
-    localStorage.setObj(key, currentLibrary);
+    localStorage.setObj(key, currentLibrary);    
 }
+
+function removeBook(){
+    currentLibrary.pop();
+  localStorage.setObj(key, currentLibrary);
+
+  populateGrid();
+}
+
+
+
+
+
 

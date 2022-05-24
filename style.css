@@ -1,0 +1,8 @@
+.books{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.blue{
+    background-color: blue;
+}
