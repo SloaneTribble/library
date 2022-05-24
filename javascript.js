@@ -13,7 +13,6 @@ let key = "library";
 currentLibrary = localStorage.getObj(key);
 
 populateGrid();
-openForm();
 
 function populateGrid() {
 let container = document.querySelector(".books");

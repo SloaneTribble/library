@@ -6,17 +6,20 @@ body{
 .books{
     display: grid;
     grid-template-columns: auto auto;
+    justify-items: center;
+    row-gap: 5px;
 }
 
 .book{
-    background-color: rgba(0, 0, 255, 0.317);
+    background-color: rgba(0, 119, 255, 0.317);
     border: 2px solid black;
     display: grid;
     text-align: center;
+    width: 80%;
 }
 
 .remove-button{
-    background-color: red;
+    background-color: rgb(251, 0, 0);
 }
 
 #form-container{
