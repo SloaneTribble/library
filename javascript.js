@@ -1,4 +1,16 @@
-let myLibrary = [];
+
+// Extend default storage-objects to handle arrays and objects
+
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+
+let key = "library";
+
+currentLibrary = localStorage.getObj(key);
 
 function Book(title, author, pages, isRead){
     this.title = title;
@@ -20,21 +32,12 @@ function displayBooks(){
     }
 }
 
-let book1 = new Book("The Book", "Bill", 12, false);
-
-addBookToLibrary(book1);
-
-let book2 = new Book("Opening a Box", "Blithe", 133, true);
-
-addBookToLibrary(book2);
-
-let book3 = new Book("Haven't a Clue", "Daryl", 44, true);
-
-addBookToLibrary(book3);
-
-
-
 function doForm() {
+
+    if(currentLibrary === null){
+        currentLibrary = [];
+    }
+    
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
@@ -42,8 +45,8 @@ function doForm() {
 
     let newBook = new Book(title, author, pages, isRead);
 
-    addBookToLibrary(newBook);
-    alert(newBook.title);
-
+    currentLibrary.push(newBook);
     
+    localStorage.setObj(key, currentLibrary);
 }
+
