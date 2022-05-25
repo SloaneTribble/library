@@ -8,38 +8,38 @@ Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
 
-let key = "library";
+const key = "library";
 
 currentLibrary = localStorage.getObj(key);
 
 populateGrid();
 
 function populateGrid() {
-let container = document.querySelector(".books");
+const container = document.querySelector(".books");
 
     if (currentLibrary.length === 0){container.style.display = "none"; return;}
     for(let i = 0; i < currentLibrary.length; i++){
-        let cell = document.createElement("div");
+        const cell = document.createElement("div");
         cell.className += "book";
 
-        let row1 = document.createElement("div");
+        const row1 = document.createElement("div");
         row1.id = i + 1;
         row1.innerText = "Title: " + currentLibrary[i].title;
         cell.appendChild(row1);
 
-        let row2 = document.createElement("div");
+        const row2 = document.createElement("div");
         row2.id = i + 1;
         row2.innerText = "Author: " + currentLibrary[i].author;
         cell.appendChild(row2);
 
-        let row3 = document.createElement("div");
+        const row3 = document.createElement("div");
         row3.id = i + 1;
         row3.innerText = "Pages: " + currentLibrary[i].pages;
         cell.appendChild(row3);
 
-        let row4 = document.createElement("div");
+        const row4 = document.createElement("div");
         row4.id = i + 1;
-        let readStatus = (currentLibrary[i].isRead === true)? "Yes" : "No";
+        const readStatus = (currentLibrary[i].isRead === true)? "Yes" : "No";
         row4.innerText = "Read it yet? " + readStatus;
         if(readStatus === "Yes") {
             cell.setAttribute("id", "read");
@@ -49,18 +49,18 @@ let container = document.querySelector(".books");
         }
         cell.appendChild(row4);
 
-        let row5 = document.createElement("button");
+        const row5 = document.createElement("button");
         row5.setAttribute ("id", "remove-button");
         row5.innerText = "Remove";
-        row5.onclick = function () {
-            let index = row1.id - 1;
+        row5.onclick = function () { // Maybe this and the below function should be declared outside of this scope.
+            const index = row1.id - 1; // I need to figure out how to reference current object when function is called.
             currentLibrary.splice(index, 1);
             localStorage.setObj(key, currentLibrary);
             window.location.reload();
         };
         cell.appendChild(row5);
 
-        let row6 = document.createElement("button");
+        const row6 = document.createElement("button");
         row6.className += "read-button";
         row6.setAttribute("id", "read-button")
         row6.innerText = "Toggle Read Status";
@@ -85,18 +85,15 @@ function Book(title, author, pages, isRead){
     this.isRead = isRead;
 }
 
-function addBookToLibrary(book){
-    myLibrary.push(book);
-}
-
-function displayBooks(){
-    let arrayLength = myLibrary.length;
-    for (let i = 0; i < arrayLength; i++){
-        for (const property in myLibrary[i]){
-            console.log(`Book ${i + 1}: ${myLibrary[i][property]}`);
-        }
-    }
-}
+// Function used during development to make sure I was accessing local storage correctly
+// function displayBooks(){
+//     const arrayLength = myLibrary.length;
+//     for (let i = 0; i < arrayLength; i++){
+//         for (const property in myLibrary[i]){
+//             console.log(`Book ${i + 1}: ${myLibrary[i][property]}`);
+//         }
+//     }
+// }
 
 function doForm() {
 
@@ -104,13 +101,13 @@ function doForm() {
         currentLibrary = [];
     }
     
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pages = document.getElementById("pages").value;
-    let checkBox = document.querySelector("#is-read");
-    let isRead = (checkBox.checked)? true : false;
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const checkBox = document.querySelector("#is-read");
+    const isRead = (checkBox.checked)? true : false;
 
-    let newBook = new Book(title, author, pages, isRead);
+    const newBook = new Book(title, author, pages, isRead);
 
     currentLibrary.push(newBook);
     
