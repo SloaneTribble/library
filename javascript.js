@@ -41,11 +41,11 @@ let container = document.querySelector(".books");
         row4.id = i + 1;
         let readStatus = (currentLibrary[i].isRead === true)? "Yes" : "No";
         row4.innerText = "Read it yet? " + readStatus;
-        if(readStatus === "Yes") cell.setAttribute("id","read");
+        if(readStatus === "Yes") cell.setAttribute("id", "read");
         cell.appendChild(row4);
 
         let row5 = document.createElement("button");
-        row5.className += "remove-button";
+        row5.setAttribute ("id", "remove-button");
         row5.innerText = "Remove";
         row5.onclick = function () {
             let index = row1.id - 1;
@@ -57,6 +57,7 @@ let container = document.querySelector(".books");
 
         let row6 = document.createElement("button");
         row6.className += "read-button";
+        row6.setAttribute("id", "read-button")
         row6.innerText = "Toggle read status";
         row6.onclick = function () {
             if(currentLibrary[i].isRead){currentLibrary[i].isRead = false;
