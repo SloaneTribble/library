@@ -37,16 +37,21 @@ let container = document.querySelector(".books");
         row3.innerText = "Pages: " + currentLibrary[i].pages;
         cell.appendChild(row3);
 
-        let row4 = document.createElement("button");
-        row4.className += "remove-button";
-        row4.innerText = "Remove";
-        row4.onclick = function () {
+        let row4 = document.createElement("div");
+        row4.id = i + 1;
+        row4.innerText = "Read status: " + currentLibrary[i].isRead;
+        cell.appendChild(row4);
+
+        let row5 = document.createElement("button");
+        row5.className += "remove-button";
+        row5.innerText = "Remove";
+        row5.onclick = function () {
             let index = row1.id - 1;
             currentLibrary.splice(index, 1);
             localStorage.setObj(key, currentLibrary);
             window.location.reload();
         };
-        cell.appendChild(row4);
+        cell.appendChild(row5);
 
         container.appendChild(cell);
     }
@@ -82,7 +87,8 @@ function doForm() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
-    let isRead = false;
+    let checkBox = document.querySelector("#is-read");
+    let isRead = (checkBox.checked)? "Read" : "Not Read Yet";
 
     let newBook = new Book(title, author, pages, isRead);
 
