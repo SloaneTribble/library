@@ -39,7 +39,9 @@ let container = document.querySelector(".books");
 
         let row4 = document.createElement("div");
         row4.id = i + 1;
-        row4.innerText = "Read status: " + currentLibrary[i].isRead;
+        let readStatus = (currentLibrary[i].isRead === true)? "Yes" : "No";
+        row4.innerText = "Read it yet? " + readStatus;
+        if(readStatus === "Yes") cell.setAttribute("id","read");
         cell.appendChild(row4);
 
         let row5 = document.createElement("button");
@@ -52,6 +54,18 @@ let container = document.querySelector(".books");
             window.location.reload();
         };
         cell.appendChild(row5);
+
+        let row6 = document.createElement("button");
+        row6.className += "read-button";
+        row6.innerText = "Toggle read status";
+        row6.onclick = function () {
+            if(currentLibrary[i].isRead){currentLibrary[i].isRead = false;
+            } else {currentLibrary[i].isRead = true;}
+            localStorage.setObj(key, currentLibrary);
+            window.location.reload();
+        }
+
+        cell.appendChild(row6);
 
         container.appendChild(cell);
     }
@@ -88,7 +102,7 @@ function doForm() {
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
     let checkBox = document.querySelector("#is-read");
-    let isRead = (checkBox.checked)? "Read" : "Not Read Yet";
+    let isRead = (checkBox.checked)? true : false;
 
     let newBook = new Book(title, author, pages, isRead);
 

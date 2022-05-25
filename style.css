@@ -18,6 +18,10 @@ body{
     width: 80%;
 }
 
+#read{
+    background-color: beige;
+}
+
 .remove-button{
     background-color: rgb(251, 0, 0);
 }
