@@ -41,7 +41,12 @@ let container = document.querySelector(".books");
         row4.id = i + 1;
         let readStatus = (currentLibrary[i].isRead === true)? "Yes" : "No";
         row4.innerText = "Read it yet? " + readStatus;
-        if(readStatus === "Yes") cell.setAttribute("id", "read");
+        if(readStatus === "Yes") {
+            cell.setAttribute("id", "read");
+            cell.style.backgroundImage = "none";
+            cell.style.backgroundImage = "linear-gradient(to top right, rgba(0, 0, 0, 0.944), rgba(0, 0, 139, 0.579), lightblue)";
+            cell.style.color = "#FFF";
+        }
         cell.appendChild(row4);
 
         let row5 = document.createElement("button");
@@ -58,7 +63,7 @@ let container = document.querySelector(".books");
         let row6 = document.createElement("button");
         row6.className += "read-button";
         row6.setAttribute("id", "read-button")
-        row6.innerText = "Toggle read status";
+        row6.innerText = "Toggle Read Status";
         row6.onclick = function () {
             if(currentLibrary[i].isRead){currentLibrary[i].isRead = false;
             } else {currentLibrary[i].isRead = true;}
