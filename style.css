@@ -79,7 +79,9 @@ button:hover{
 }
 
 #form-container{
-    width: 300px;
+    width: fit-content;
+    height: fit-content;
+    padding-bottom: 10px;
     position: absolute;
     display: none;
     top: 10%;
@@ -99,12 +101,18 @@ button:hover{
 }
 
 #form input[type=text],
-#form input[type=number] {
+#form input[type=number]
+ {
     width: 90%;
     padding: 15px;
     margin: 5px 0 22px 0;
     border: none;
     background-color: #f1f1f1;
+}
+
+#form input[type=checkbox],
+#form label[for="is-read"]{
+    margin-bottom: 10px;
 }
 
 #form input[type=text]:focus,
