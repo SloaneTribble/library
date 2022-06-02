@@ -89,6 +89,7 @@ button:hover{
 }
 
 #form-container{
+    
     width: fit-content;
     height: fit-content;
     padding-bottom: 10px;
@@ -104,6 +105,8 @@ button:hover{
 }
 
 #form {
+    display: grid;
+    justify-items: center;
     height: 500px;
     width: 300px;
     padding: 10px;
