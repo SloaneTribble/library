@@ -96,6 +96,7 @@ button:hover{
     right: 10px;
     top: -17px;
     border-radius: 0 12px 0 12px;
+    font-size: .8rem;
 }
 
 #form-container{
