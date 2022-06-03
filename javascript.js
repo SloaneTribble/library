@@ -80,11 +80,12 @@ const container = document.querySelector(".books");
     
 }
 
-function Book(title, author, pages, isRead){
-    this.title = title;
+class Book{
+    constructor(title, author, pages, isRead)
+    {this.title = title;
     this.author = author;
     this.pages = pages;
-    this.isRead = isRead;
+    this.isRead = isRead;}
 }
 
 // Function used during development to make sure I was accessing local storage correctly
