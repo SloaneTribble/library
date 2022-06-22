@@ -136,6 +136,46 @@ function closeForm() {
     document.getElementById("pages").value = "";
 }
 
+const title = document.getElementById('title');
+const author = document.getElementById('author');
+const pages = document.getElementById('pages');
+
+title.setCustomValidity('Title missing!');
+author.setCustomValidity('Author missing!');
+pages.setCustomValidity('Pages missing!');
+
+
+
+title.addEventListener('input', function(event) {
+    if (title.validity.valueMissing){
+        title.setCustomValidity('Title missing!');
+        title.reportValidity();
+    }
+    else {
+        title.setCustomValidity('');
+    }
+});
+
+author.addEventListener('input', function(event) {
+    if (author.validity.valueMissing){
+        author.setCustomValidity('Author missing!');
+        author.reportValidity();
+    }
+    else {
+        author.setCustomValidity('');
+    }
+});
+
+pages.addEventListener('input', function(event) {
+    if (pages.validity.valueMissing){
+        pages.setCustomValidity('Pages missing!');
+        pages.reportValidity();
+    }
+    else {
+        pages.setCustomValidity('');
+    }
+});
+
 
 
 
